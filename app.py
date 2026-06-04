@@ -14,8 +14,29 @@ st.markdown("""
 
 # ВВОД ИСХОДНЫХ ДАННЫХ
 st.sidebar.header("Исходные параметры")
-b = st.sidebar.number_input("Полуширина начальной струи b, м", value=2.0, min_value=0.1)
-B = st.sidebar.number_input("Полная ширина русла после расширения B, м", value= b * 5.0, min_value=b * 2.0)
+
+if "b" not in st.session_state:
+    st.session_state.b = 2.0
+if "B" not in st.session_state:
+    st.session_state.B = 10.0
+
+st.sidebar.number_input(
+    "Полуширина начальной струи b, м", 
+    min_value=0.1, 
+    value=st.session_state.b, 
+    key="b"
+)
+
+if st.session_state.B < 2 * st.session_state.b:
+    st.session_state.B = 2 * st.session_state.b
+
+st.sidebar.number_input(
+    "Полная ширина русла после расширения B, м", 
+    min_value=2 * st.session_state.b, 
+    value=st.session_state.B, 
+    key="B"
+)
+
 V0 = st.sidebar.number_input("Начальная скорость V₀, м/с", value=1.5, min_value=0.1)
 C = st.sidebar.number_input("Опытный коэффициент C", value=0.082, min_value=0.01, max_value=0.2, step=0.001)
 n_streams = st.sidebar.number_input("Число расчётных струй", value=10, min_value=5, max_value=50)
