@@ -37,6 +37,8 @@ st.sidebar.number_input(
     key="B"
 )
 
+b = st.session_state.b
+B = st.session_state.B
 V0 = st.sidebar.number_input("Начальная скорость V₀, м/с", value=1.5, min_value=0.1)
 C = st.sidebar.number_input("Опытный коэффициент C", value=0.082, min_value=0.01, max_value=0.2, step=0.001)
 n_streams = st.sidebar.number_input("Число расчётных струй", value=10, min_value=5, max_value=50)
@@ -51,7 +53,7 @@ for x_str in x_input.split(","):
     except ValueError:
         pass
 
-Q0 = 2 * st.session_state.b * V0  # Начальный расход на единицу глубины
+Q0 = 2 * b * V0  # Начальный расход на единицу глубины
 
 # РАСЧЁТНОЕ ЯДРО
 def kramp(z):
