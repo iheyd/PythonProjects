@@ -100,7 +100,7 @@ if st.button("Рассчитать эпюры", type="primary"):
         y_mid = np.linspace(B/(2*n_streams), B - B/(2*n_streams), n_streams)  # середины струй
         y_plot = np.linspace(0, B, 300)
         
-        tab1, tab2 = st.tabs(["Эпюры скоростей", "Таблица расчёта (стр. 8-11)"])
+        tab1, tab2 = st.tabs(["Эпюры скоростей", "Таблица расчёта"])
         
         with tab1:
             fig, ax = plt.subplots(figsize=(9, 5))
