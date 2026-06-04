@@ -148,5 +148,5 @@ if st.button("Рассчитать эпюры", type="primary"):
                 "V, м/с": np.round(V_final, 3),
                 "Q струи, м²/с": np.round(Q_str, 4)
             })
-            st.dataframe(df, use_container_width=True)
+            st.dataframe(df, width="stretch")
             st.caption(f"Суммарный расход: ΣQ = {np.sum(Q_str):.4f} м²/с | ξ = {xi_ref:.4f} | Δ = {abs(np.sum(Q_str)-Q0):.5f}")
