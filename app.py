@@ -51,7 +51,7 @@ for x_str in x_input.split(","):
     except ValueError:
         pass
 
-Q0 = 2 * b * V0  # Начальный расход на единицу глубины
+Q0 = 2 * st.session_state.b * V0  # Начальный расход на единицу глубины
 
 # РАСЧЁТНОЕ ЯДРО
 def kramp(z):
